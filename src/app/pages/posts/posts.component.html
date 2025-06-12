@@ -1,0 +1,38 @@
+<div class="posts">
+  <h2 class="posts__title">Posts</h2>
+
+  <div class="posts__grid">
+    @for (post of postsList(); track post.id) {
+    <div class="posts__card">
+      <div class="posts__card-header">
+        <h3 class="posts__card-title">{{ post.title }}</h3>
+        <span class="posts__card-author"
+          >by {{ postUserNames()[post.userId] }}</span
+        >
+      </div>
+      <div class="posts__card-body">
+        {{ post.body }}
+      </div>
+      <div class="posts__card-actions">
+        <button
+          class="posts__button posts__button--details"
+          (click)="openPostDetailsModal(post)"
+          title="View full post details"
+        >
+          Details
+        </button>
+      </div>
+    </div>
+    }
+  </div>
+
+  @if (showModal()) {
+  <app-modal
+    [isOpen]="showModal()"
+    [title]="selectedPostData()?.title || ''"
+    [content]="selectedPostData()?.body || ''"
+    (close)="closeModal()"
+  >
+  </app-modal>
+  }
+</div>

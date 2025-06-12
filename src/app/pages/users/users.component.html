@@ -1,0 +1,71 @@
+<div class="users">
+  <h2 class="users__title">Users</h2>
+
+  <div class="users__search">
+    <div class="users__search-container">
+      <input
+        type="text"
+        class="users__search-input"
+        placeholder="Search users by name or email..."
+        [(ngModel)]="searchText"
+        (input)="onSearchTextChange()"
+      />
+      <span class="users__search-icon"
+        ><img src="search-icon.png" alt="Search Symbol"
+      /></span>
+    </div>
+  </div>
+
+  <div class="users__content">
+    @if (filteredUsersList().length === 0 && searchText()) {
+    <div class="users__empty-state">
+      <h3>No users found</h3>
+      <p>Try adjusting your search terms.</p>
+    </div>
+    } @else if (filteredUsersList().length > 0) {
+    <table class="users__table">
+      <thead class="users__table-head">
+        <tr class="users__table-row">
+          <th class="users__table-header">First Name</th>
+          <th class="users__table-header">Last Name</th>
+          <th class="users__table-header">Phone</th>
+          <th class="users__table-header">Email</th>
+          <th class="users__table-header">Company</th>
+          <th class="users__table-header">Actions</th>
+        </tr>
+      </thead>
+      <tbody class="users__table-body">
+        @for (user of filteredUsersList(); track user.id) {
+        <tr class="users__table-row">
+          <td class="users__table-cell">
+            {{ getFirstNameFromFullName(user.name) }}
+          </td>
+          <td class="users__table-cell">
+            {{ getLastNameFromFullName(user.name) }}
+          </td>
+          <td class="users__table-cell">{{ user.phone }}</td>
+          <td class="users__table-cell">{{ user.email }}</td>
+          <td class="users__table-cell">{{ user.company.name }}</td>
+          <td class="users__table-cell users__table-cell--actions">
+            <button
+              class="users__button users__button--posts"
+              (click)="viewUserPostsBtn(user.id)"
+              title="View posts by {{ user.name }}"
+            >
+              Posts
+            </button>
+            <button
+              class="users__button users__button--todos"
+              (click)="viewUserTodosBtn(user.id)"
+              title="View todos by {{ user.name }}"
+            >
+              Todos
+            </button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+    }
+  </div>
+</div>

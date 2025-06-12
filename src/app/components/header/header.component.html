@@ -1,0 +1,8 @@
+<header class="header">
+  <div class="header__content">
+    <h1 class="header__logo" (click)="navigateToHomePage()">Croco App</h1>
+    <div class="header__datetime">
+      {{ currentDateTime() | date : "medium" }}
+    </div>
+  </div>
+</header>

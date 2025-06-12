@@ -1,0 +1,19 @@
+@if (isOpen) {
+<div class="modal" (click)="onBackdropClick($event)">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h3 class="modal__title">{{ title }}</h3>
+      <button
+        class="modal__close"
+        (click)="onCloseBtn()"
+        aria-label="Close modal"
+      >
+        X
+      </button>
+    </div>
+    <div class="modal__body">
+      <p class="modal__text">{{ content }}</p>
+    </div>
+  </div>
+</div>
+}

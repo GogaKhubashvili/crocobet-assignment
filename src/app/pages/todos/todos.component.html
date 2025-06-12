@@ -1,0 +1,27 @@
+<div class="todos">
+  <h2 class="todos__title">To-Do List</h2>
+
+  <div class="todos__list">
+    @for (todo of todosList(); track todo.id) {
+    <div class="todos__item" [class.todos__item--completed]="todo.completed">
+      <div class="todos__checkbox">
+        <span
+          class="todos__checkbox-icon"
+          [class.todos__checkbox-icon--checked]="todo.completed"
+        >
+          {{ todo.completed ? "✓" : "" }}
+        </span>
+      </div>
+      <div class="todos__item-content">
+        <span class="todos__item-title">{{ todo.title }}</span>
+        <span
+          class="todos__item-status"
+          [class.todos__item-status--completed]="todo.completed"
+        >
+          {{ todo.completed ? "Completed" : "Pending" }}
+        </span>
+      </div>
+    </div>
+    }
+  </div>
+</div>

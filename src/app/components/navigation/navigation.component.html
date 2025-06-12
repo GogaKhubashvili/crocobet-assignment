@@ -1,0 +1,28 @@
+<nav class="navigation">
+  <div class="navigation__menu">
+    <button
+      class="navigation__button"
+      routerLink="/users"
+      routerLinkActive="navigation__button--active"
+      (click)="navigateToUsersPage()"
+    >
+      Users
+    </button>
+    <button
+      class="navigation__button"
+      routerLink="/posts"
+      routerLinkActive="navigation__button--active"
+      (click)="navigateToPostsPage()"
+    >
+      Posts
+    </button>
+    <button
+      class="navigation__button"
+      routerLink="/todos"
+      routerLinkActive="navigation__button--active"
+      (click)="navigateToTodosPage()"
+    >
+      Todos
+    </button>
+  </div>
+</nav>
